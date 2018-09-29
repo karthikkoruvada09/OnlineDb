@@ -1,0 +1,164 @@
+<div class="row">
+
+</div>
+<div class="row" style="margin-top: 150px">
+  <div class="col-2"></div>
+    <div class="col-8" >
+
+      
+      
+       
+     
+      
+      
+      <div class="form-group" style="margin-left:600px">
+        <label for="s" style="font-size:25px" ><b>Branch:</b> </label>
+     
+        <select class="bg-success ml-2"  [(ngModel)]="searchbranch">
+          <option> </option>
+          <option  value="civil" > civil</option>
+          <option  value="mec"  > mec</option>
+          <option value="ece" >ece </option>
+          <option  value="cse" >cse </option>
+          <option  value="eee" >eee </option>
+          <option  value="it" >eee </option>
+        </select>
+      </div>
+
+
+          <div class="row">
+      <div class="col-6 ">
+        <label style="color:crimson"><h1>Search</h1></label>
+        <label style="color:black"><h5>(by date)  </h5></label>
+        <input type="text" class="form-control" [(ngModel)]="searchdate">
+        
+      </div>
+
+      <div class="col-6" style="margin-top:65px" >
+        
+        
+          <button type="button" class="btn btn-danger" style="margin-left:110px"  data-target="#l" data-toggle="modal" >Add new result</button>
+          
+
+      </div>
+    </div>
+      
+      
+        
+        <br/>
+      <br/>
+      <table border="8" class="table-striped table-hover" style="width:100%">
+        
+        <thead style="font-size: 25px;color: darkblue" >
+          
+
+            
+             <th>Date</th>
+             <th>Branch</th>
+             <th>name</th>
+             <th>percentage</th>
+             <th> del</th>
+             <th>edit</th>
+             
+        </thead>
+
+        <tr style="font-size: 20px;color:darkred" *ngFor="let i of ararr|branch:searchbranch|date:searchdate " >
+          
+          
+          
+          
+          <td>{{i.Date}}</td>
+          <td>{{i.Branch}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.percentage}}</td>
+          <td><button type="button" class="btn btn-danger ml-2" (click)="delete(i._id)">Del </button></td>
+          <td><button type="button" class="btn btn-success ml-2" (click)="edit(i)">Edit </button></td>
+        </tr>
+      </table>
+
+  
+     </div>
+     <div class="col-2"></div>
+    
+  
+</div>
+
+
+<div *ngIf="b">
+  <div class="row mt-5">
+    <div class="col-2"></div>
+    <div class="col-8">
+  
+      <form #po="ngForm" (ngSubmit)="update()">
+        <label class="ml-3"><b>Date:</b></label>
+        <input class="ml-3" type="date" name="Date" [(ngModel)]="i.Date">
+        <label class="ml-3"><b>Branch:</b> </label>
+        <input class="ml-3" type="text" name="Branch" [(ngModel)]="i.Branch">
+        <label class="ml-3"><b>Name:</b></label>
+        <input class="ml-3" type="text" name="name" [(ngModel)]="i.name">
+        
+        <label class="ml-3"><b>Notification:</b></label>
+        <input class="ml-3" type="text" name="percentage" [(ngModel)]="i.percentage">
+        <button  type="submit" class="btn btn-danger"> update</button>
+      </form>
+  
+    </div>
+    <div class="col-2"></div>
+  </div>
+  </div>
+
+
+
+
+<div class="row" >
+
+    <div class="modal fade " id="l" style="width:100%" >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-success">
+            <form #re="ngForm" (ngSubmit)="resAdmin(re.value)">
+
+              <div  class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">X</button>
+              </div>
+
+          <div class="modal-body">
+         
+                <div class="form-group">
+
+                    <div class="form-group">
+                        <label for="pass"><b>Branch:</b></label>
+                        <input id="pass"  type="text" class="form-control" name="Branch" [(ngModel)]="Branch">
+                      </div>
+                      
+                  <br/>
+                    <label for="cpass"><b>Date:</b></label>
+                    <input id="cpass"  type="date" placeholder="date/mon/year" class="form-control" name="Date" [(ngModel)]="Date">
+                  </div>
+
+
+                  
+
+
+                    <div class="form-group">
+                        <label for="pass"><b>Name::</b></label>
+                        <input id="pass"  type="text" class="form-control" name="name" [(ngModel)]="name">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="pass"><b>Percentage:</b></label>
+                          <input id="pass"  type="text" class="form-control" name="percentage" [(ngModel)]="percentage">
+                        </div>
+
+                      <button type="submit" class="btn btn-danger">Add</button>
+                  
+                    </div>  
+            </form>
+         
+
+        
+
+
+        </div>
+      </div>
+    </div>
+  </div>

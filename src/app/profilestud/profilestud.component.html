@@ -1,0 +1,135 @@
+<div class="row ml-0 mr-0"  >
+    <div class="col-3"></div>
+  <div class="col-6 ">
+    <div clas="jumbotron" >
+        <br />
+        <br />
+      <h1 >Student registration</h1>
+      <br />
+      <br />
+      
+      <form #ref="ngForm" (ngSubmit)="studentUpd()">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <p><label for="user"> <b>Username: </b></label>
+                <input id="user" type="text" class="form-control"  required minlength="5" maxlength="15" name="username" [(ngModel)]="r.username" #fr="ngModel">
+                <label class="alert alert-danger validation-message" *ngIf="fr.touched&&fr.invalid&&fr.pristine">username is mandatory </label>
+                <label class="alert alert-danger validation-message" *ngIf="fr.invalid&&fr.errors?.minlength&&fr.dirty">minimum 5 char required </label>
+  
+            </div>
+
+           
+  
+            <div class="form-group">
+              <label for="pass"> <b> new Password:</b></label>
+              <input id="pass" type="password"  type="{{check1?'text':'password'}}" class="form-control" name="password" [(ngModel)]="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"  #ref2="ngModel">
+                <input type="checkbox" [(ngModel)]="check1" name="check1"><label>show password</label>
+              <label class="alert alert-danger validation-message" *ngIf="ref2.touched&&ref2.pristine&&ref2.invalid">create password</label>
+              <label class="alert alert-danger validation-message" *ngIf="ref2.errors?.pattern&&ref2.dirty&&ref2.invalid">password be like:number,number,(a-z),(@ or # or $),(a-z)num</label>
+  
+  
+  
+            </div>
+
+            <div class="form-group">
+              <label for="cpass"><b>Confirm Password:</b></label>
+              <input id="cpass"   type="password" #cf="ngModel" class="form-control" name="cpassword"  [(ngModel)]="cpassword">
+              
+              <label class="alert alert-danger validation-message" *ngIf="ref2.value!=cf.value">passwords donot match</label>
+            </div>
+  
+           
+  
+            
+            <br/>
+            <div class="form-group">
+              <label for="s"><b>Branch:</b> </label>
+           
+              <select   name="branch" [(ngModel)]="r.branch" style="margin-left:20px">
+                <option> </option>
+                <option  value="CIVIL" > CIVIL</option>
+                <option  value="MEC"  > MEC</option>
+                <option value="ECE" >ECE </option>
+                <option  value="CSE" >CSE </option>
+                <option  value="EEE" >EEE </option>
+              </select>
+            </div>
+          </div>
+  
+  
+  
+  
+  
+  
+  
+  
+          <div class="col-6">
+  
+            <div class="form-group">
+              <label for="p"><b>Email:</b></label>
+              <input type="email" id="p"  class="form-control" name="email"
+                [(ngModel)]="r.email">
+            </div>
+  
+            <div class="form-group">
+              <p><label for="dob"> <b>Date of Birth: </b></label>
+                <input id="dob" type="date" class="form-control" name="dob" [(ngModel)]="r.dob">
+            </div>
+  
+            <label> <b>Gender:</b></label>
+            <div class="form-check ">
+              <label class="form-check-label">
+  
+  
+  
+                <input type="radio" class="form-check-input" name="gender" value="Male" [(ngModel)]="r.male">Male
+  
+              </label>
+            </div>
+  
+            <div class="form-check ">
+              <label class="form-check-label">
+  
+  
+  
+                <input type="radio" class="form-check-input" name="gender" value="Female" [(ngModel)]="r.Female">Female
+  
+              </label>
+            </div>
+  
+            <div class="form-group mt-2">
+              <label for="no"><b>Phone number:</b></label>
+              <input id="no"  type="text" class="form-control" name="phno" required pattern="\d\d\d\d\d\d\d\d\d\d"
+                maxlength="10" [(ngModel)]="r.phno" #re=ngModel>
+              <label class="alert alert-danger validation-message" *ngIf="re.touched&&re.pristine&&re.invalid">phone no required</label>
+              <label class="alert alert-danger validation-message" *ngIf="re.errors?.pattern&&re.dirty&&re.invalid">enter 10 digit number</label>
+            </div>
+  
+  
+          
+            <br />
+            <div class="row">
+              <div class="col-6">
+                  <button type="button" routerLink="logoutstu9" class="btn btn-danger " >Back</button>  
+              </div>
+
+              <div class="col-6">
+                  <button type="submit"  class="btn btn-success " > Update</button>
+                </div>
+
+            </div>
+          
+  
+  
+  
+  
+  
+          </div>
+        </div>
+  
+      </form>
+  
+    </div>
+    <div class="col-3"></div>
+  </div>

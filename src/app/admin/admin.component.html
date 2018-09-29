@@ -1,0 +1,112 @@
+
+<div class="row  ml-0 mr-0">
+  <div class="col-3"></div>
+
+  <div class="col-6 ">
+    <div clas="jumbotron ">
+        <br/>
+        <br/>
+
+        <h1 >Admin registration</h1>
+        <br/>
+        <br/>
+        <br/>
+        
+      <form #ref="ngForm" (ngSubmit)="admin(ref.value)">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <p><label for="user"> <b>EmployeeId: </b></label>
+                <input id="user" type="text" placeholder="karthik" class="form-control" name="username" [(ngModel)]="username" required  pattern="[0-9][0-9][a-z][a-z]\d\d\d"  maxlength="7" #ref1="ngModel">
+                <label class="alert alert-danger validation-message" *ngIf="ref1.touched&&ref1.pristine&&ref1.invalid"> name is required</label>
+                <label class="alert alert-danger validation-message"*ngIf="ref1.dirty&&ref1.invalid">enter correct id</label>
+                
+                 {{ref1.className}}
+                
+
+            </div>
+
+            <div class="form-group">
+              <label for="pass"> <b>Password:</b></label>
+              <input id="pass"   type="{{check?'text':'password'}}" placeholder="13a@b3"class="form-control"name="password" [(ngModel)]="password" required  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"   #ref2="ngModel">
+              <input type="checkbox" [(ngModel)]="check" name="check"><label>show password</label>
+              <label class="alert alert-danger validation-message" *ngIf="ref2.touched&&ref2.pristine&&ref2.invalid">create password</label>
+              <label class="alert alert-danger validation-message" *ngIf="ref2.errors?.pattern&&ref2.dirty&&ref2.invalid">password be like:1 number,1 special symbol and 1 character atleast</label>
+ 
+              
+
+            </div>
+
+            <div class="form-group">
+              <label for="cpass"><b>Confirm Password:</b></label>
+              <input id="cpass" placeholder="13a@b3"  type="password" #cf="ngModel" class="form-control" name="cpassword"  [(ngModel)]="cpassword">
+              
+              <label class="alert alert-danger validation-message" *ngIf="ref2.value!=cf.value">passwords donot match</label>
+            </div>
+
+            <div class="form-group">
+                <label for="p"><b>Email:</b></label>
+                <input type="email" id="p" placeholder="karthik@gmail.com" class="form-control" name="email" [(ngModel)]="email">
+              </div>
+          </div>
+
+          
+        
+    
+
+          <div class="col-6">
+
+              
+
+            <div class="form-group">
+              <p><label for="dob"> <b>Date of Birth: </b></label>
+                <input id="dob" type="date" class="form-control" name="dob" [(ngModel)]="dob">
+            </div>
+
+            <label class="mt-3"> <b>Gender:</b></label>
+            <div class="form-check ">
+                <label class="form-check-label">
+    
+                
+                 
+                  <input type="radio" class="form-check-input" name="gender" value="Male" [(ngModel)]="male"><b>Male</b>
+              
+              </label>
+              </div>
+              
+              <div class="form-check ">
+                  <label class="form-check-label">
+      
+                
+                   
+                    <input type="radio" class="form-check-input"  name="gender" value="Female" [(ngModel)]="Female"><b>Female</b>
+                  
+                </label>
+                </div>
+
+            <div class="form-group mt-2">
+              <label for="no"><b>Phone number:</b></label>
+              <input id="no" placeholder="7878787878" type="text" class="form-control" name="phno" required pattern="\d\d\d\d\d\d\d\d\d\d" maxlength="10" [(ngModel)]="phno" #re=ngModel>
+              <label class="alert alert-danger validation-message" *ngIf="re.touched&&re.pristine&&re.invalid">phone no required</label>
+              <label class="alert alert-danger validation-message" *ngIf="re.errors?.pattern&&re.dirty&&re.invalid">enter 10 digit number</label>
+            </div>
+
+            <br/>
+            <br/>
+            <button type="submit"  class="btn btn-danger mt-4 " style="margin-left: 250px"  >Register</button>
+
+          
+  
+
+            <!-- [disabled]="!ref.valid" -->
+
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+  <div class="col-3"></div>
+</div>

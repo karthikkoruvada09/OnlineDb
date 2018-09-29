@@ -1,0 +1,53 @@
+<div class="row">
+
+</div>
+<div class="row" style="margin-top: 150px">
+  <div class="col-2"></div>
+    <div class="col-8" >
+        <div class="row">
+          <div class="col-6">
+            <label style="color:crimson"><h1>Search</h1></label>
+            <label style="color:black"><h5>(by date)  </h5></label>
+            <input type="text" class="form-control" [(ngModel)]="searchdate">
+            
+          </div>
+          <div class="col-6">
+
+          </div>
+          
+
+        </div>
+
+      
+      
+        
+        <br/>
+      <br/>
+      <table border="8" class="table-striped table-hover" style="width:100%">
+        
+        <thead style="font-size: 25px;color: darkblue" >
+          
+
+             <th >Date</th>
+             <th>Branch</th>
+             <th>Notification</th>
+            
+           
+             
+        </thead>
+
+        <tr style="font-size: 20px;color:darkred" *ngFor="let i of arr|date:searchdate" >
+          
+          <td>{{i.Date}}</td>
+          <td>{{i.Branch}}</td>
+          <td>{{i.Notification}}</td>
+          
+        </tr>
+      </table>
+
+  
+     </div>
+     <div class="col-2"></div>
+    
+  
+</div>
