@@ -17,6 +17,8 @@ import { ProfilestudComponent } from '../profilestud/profilestud.component';
 import { NotificationsstudComponent } from '../notificationsstud/notificationsstud.component';
 
 import { ResultsstudComponent } from '../resultsstud/resultsstud.component';
+import { AuthGuard } from '../auth/auth.guard';
+import { OnlyLoggedInUsersGuardService } from '../only-logged-in-users-guard.service';
 
 
 
@@ -25,7 +27,7 @@ import { ResultsstudComponent } from '../resultsstud/resultsstud.component';
     [
       RouterModule.forRoot([{ path: 'home', component: HomeComponent, children: [
         { path: 'about', component: AboutComponent },
-         { path: 'contact', component: ContactComponent,children:[{path:"s",redirectTo:"/home/success"}]  }, 
+         { path: 'contact', component: ContactComponent,canActivate:[AuthGuard,OnlyLoggedInUsersGuardService],children:[{path:"s",redirectTo:"/home/success"}]  }, 
          { path: 'admin', component: AdminComponent},
           { path: 'student', component: StudentComponent },
            { path: 'login', component: LoginComponent },
@@ -33,9 +35,9 @@ import { ResultsstudComponent } from '../resultsstud/resultsstud.component';
              { path: 'home', redirectTo: '/home', pathMatch: 'full' }] },
       { path: 'logout', component: LogoutComponent, children: [{path:'proadmin',component:ProfileadminComponent,children:[{path:'lo',redirectTo:'/logout'}]},{path:'notiadmin',component:NotificationsadminComponent},{path:'resultadmin',component:ResultsadminComponent},{ path: 'logout1', redirectTo: '/home', pathMatch: 'full' }] },
       { path: 'logoutstudent', component: LogoutstudentComponent, children: [{path:'prostu',component:ProfilestudComponent,children:[{path:'logoutstu9',redirectTo:'/logoutstudent',pathMatch:'full'}]},{path:'notistu',component:NotificationsstudComponent},{path:'resultstu',component:ResultsstudComponent},{ path: 'logouts', redirectTo: '/home', pathMatch: 'full' }] },
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '', redirectTo: '/home', pathMatch: 'full' }, 
 
-      ])
+      ], {useHash: true})
     ],
   exports: [RouterModule]
 

@@ -26,6 +26,12 @@ import { NotificationsstudComponent } from './notificationsstud/notificationsstu
 import { ProfilestudComponent } from './profilestud/profilestud.component';
 import { BranchPipe } from './branch.pipe';
 import { DatePipe } from './date.pipe';
+import { OnlyLoggedInUsersGuardService } from './only-logged-in-users-guard.service';
+import { UserServiceService } from './user-service.service';
+import { AuthGuard } from './auth/auth.guard';
+
+
+
 
 
 
@@ -86,11 +92,13 @@ import { DatePipe } from './date.pipe';
     FormsModule,
    
     RouModule,
-    HttpClientModule
+    HttpClientModule,
+    
    
-   
+ 
+  
   ],
-  providers: [],
+  providers: [OnlyLoggedInUsersGuardService,UserServiceService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
